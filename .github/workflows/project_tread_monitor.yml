@@ -1,6 +1,8 @@
 name: Project Tread Ukraine Law Runtime
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "0 9 * * *"
 
 jobs:
   monitor:
