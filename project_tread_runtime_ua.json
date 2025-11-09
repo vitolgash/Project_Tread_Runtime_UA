@@ -1,0 +1,97 @@
+{
+  "project_tread_runtime_ua": {
+    "meta": {
+      "name": "Project Tread Runtime UA",
+      "version": "3.0",
+      "type": "autonomous_monitoring_system"
+    },
+    "modules": {
+      "monitoring": {
+        "description": "Real-time monitoring of Ukrainian law, registers, and sanctions.",
+        "scripts": [
+          "unified_monitor.py",
+          "export_reports.py"
+        ],
+        "frequency": "daily",
+        "timezone": "Europe/Kyiv",
+        "outputs": [
+          "ukraine_law_runtime_status.json",
+          "sanctions_status.json",
+          "logs/",
+          "reports/"
+        ]
+      },
+      "dashboard": {
+        "description": "React dashboard; Tailwind via CDN; no external API.",
+        "entry": "dashboard/src/App.jsx",
+        "auto_build": true,
+        "auto_deploy": true,
+        "deploy_target": "GitHub Pages"
+      },
+      "github_actions": {
+        "workflows": [
+          ".github/workflows/project_tread_monitor.yml",
+          ".github/workflows/project_tread_dashboard.yml"
+        ],
+        "automation": [
+          "Monitoring + Push JSON results",
+          "Build Dashboard + Deploy to Pages",
+          "Export Reports + Commit to repo"
+        ]
+      },
+      "notifications": {
+        "channel": "Telegram",
+        "env_vars": [
+          "BOT_TOKEN",
+          "CHAT_ID"
+        ],
+        "placeholders": {
+          "BOT_TOKEN": "YOUR_TELEGRAM_BOT_TOKEN",
+          "CHAT_ID": "YOUR_CHAT_ID"
+        },
+        "triggers": [
+          "Law updates",
+          "API outage",
+          "Sanction list change"
+        ]
+      },
+      "analytics": {
+        "sources": "logs/",
+        "outputs": "reports/",
+        "formats": [
+          "JSON",
+          "CSV"
+        ],
+        "aggregation_fields": [
+          "timestamp",
+          "category",
+          "message"
+        ],
+        "use_in_dashboard": true
+      }
+    },
+    "env": {
+      "python_version": "3.10+",
+      "node_version": "18+",
+      "packages_python": [
+        "requests",
+        "lxml"
+      ],
+      "packages_node": [
+        "react",
+        "react-dom",
+        "vite"
+      ]
+    },
+    "integration": {
+      "repo_visibility": "Public",
+      "primary_branch": "main",
+      "deployment": "GitHub Pages"
+    },
+    "output_contract": {
+      "language": "Russian (UI terms English)",
+      "step_model": "context → command → expected_result → verification",
+      "policy": "ProLevel, NoFluff, One step at a time"
+    }
+  }
+}
