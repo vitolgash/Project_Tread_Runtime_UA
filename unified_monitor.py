@@ -70,6 +70,7 @@ def save(path, data):
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 def main():
+        send_tg("✅ Тестовое уведомление: система мониторинга активна.")
     law_report = {
         "timestamp": datetime.now().isoformat(),
         "constitution_last": fetch_last_edit(URLS["constitution"]),
