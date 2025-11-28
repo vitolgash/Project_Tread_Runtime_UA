@@ -104,7 +104,7 @@ def save(path, data):
 # ---------------- MAIN ---------------- #
 
 def main():
-    send_tg("✅ Тестовое уведомление: система мониторинга активна.")
+    send_tg("✅ Тестовое уведомление: monitoring system is active.")
 
     law_report = {
         "timestamp": datetime.now().isoformat(),
@@ -183,7 +183,7 @@ def main():
             },
         )
 
-        send_tg("📢 Project Thread — обновления:\n\n" + "\n\n".join(alerts))
+        send_tg("📢 Project Thread — updates:\n\n" + "\n\n".join(alerts))
 
 
 if __name__ == "__main__":
