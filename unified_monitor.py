@@ -104,7 +104,7 @@ def save(path, data):
 # ---------------- MAIN ---------------- #
 
 def main():
-    send_tg("✅ Тестовое уведомление: monitoring system is active.")
+    send_tg("✅ Test notification: the monitoring system is active.")
 
     law_report = {
         "timestamp": datetime.now().isoformat(),
@@ -148,7 +148,7 @@ def main():
             )
 
     if not law_report["nacp_api_ok"]:
-        alerts.append("❌ NACP API unavailability.")
+        alerts.append("❌ NACP API unavailable.")
 
     # САНКЦИИ
     if (
