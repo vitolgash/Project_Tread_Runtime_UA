@@ -1,7 +1,7 @@
 {
-  "project_tread_runtime_ua": {
+  "project_thread_runtime_ua": {
     "meta": {
-      "name": "Project Tread Runtime UA",
+      "name": "Project Thread Runtime UA",
       "version": "3.0",
       "type": "autonomous_monitoring_system"
     },
@@ -30,8 +30,8 @@
       },
       "github_actions": {
         "workflows": [
-          ".github/workflows/project_tread_monitor.yml",
-          ".github/workflows/project_tread_dashboard.yml"
+          ".github/workflows/project_thread_monitor.yml",
+          ".github/workflows/project_thread_dashboard.yml"
         ],
         "automation": [
           "Monitoring + Push JSON results",
