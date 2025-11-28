@@ -148,7 +148,7 @@ def main():
             )
 
     if not law_report["nacp_api_ok"]:
-        alerts.append("❌ API НАЗК недоступен.")
+        alerts.append("❌ NACP API unavailability.")
 
     # САНКЦИИ
     if (
